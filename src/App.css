@@ -164,3 +164,97 @@ body{
   .modal-cover{ height:320px; }
 }
 
+/* FEED UI */
+
+.feed-page {
+  padding: 0 12px 80px;
+}
+
+.feed-tabs {
+  display: flex;
+  justify-content: space-around;
+  background: #2e2452;
+  border-radius: 12px;
+  margin: 12px 0;
+  padding: 6px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.tab.active {
+  color: white;
+  font-weight: 600;
+}
+
+.feed-post {
+  background: #1b142f;
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar.small {
+  width: 36px;
+  height: 36px;
+  background: #444;
+  border-radius: 50%;
+}
+
+.meta {
+  flex: 1;
+}
+
+.user {
+  font-size: 13px;
+  color: #fff;
+}
+
+.user span {
+  color: #aaa;
+}
+
+.time {
+  font-size: 11px;
+  color: #777;
+}
+
+.more-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 18px;
+}
+
+.feed-image {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  margin: 10px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.feed-text {
+  font-size: 14px;
+  color: #ddd;
+  margin: 10px 0;
+}
+
+.feed-actions {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #aaa;
+}
