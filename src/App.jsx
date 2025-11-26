@@ -34,6 +34,14 @@ const SAMPLE_GAMES = [
     cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1754692865',
     description: "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?"
   },
+  {
+    id: 5,
+    title: "Signalis",
+    subtitle: 'Survival Horror · Psychological',
+    price: '19.99',
+    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1262350/header.jpg?t=1762193138',
+    description: "A survival horror game where a Replika android named Elster awakens from cryostasis after a crash and searches for her lost partner in a surreal, dystopian world."
+  },
 ];
 
 function TopBar({ onMenu, title }) {
