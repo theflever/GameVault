@@ -156,7 +156,7 @@ body{
 /* small utilities */
 .post{ background:rgba(255,255,255,0.02); padding:12px; border-radius:12px; margin:12px 6px; color:var(--muted); }
 
-/* responsive tweaks */
+/* responsive tweaks i know dada */
 @media(min-width:900px){
   .topbar{ height:72px; }
   .app-container{ padding: 18px; }
