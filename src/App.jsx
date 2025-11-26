@@ -204,6 +204,69 @@ function Profile() {
   );
 }
 
+const SAMPLE_POSTS = [
+  {
+    id: 1,
+    user: "xx_h3lena_xx",
+    community: "r/SilkSong",
+    time: "3 min ago",
+    text: "absolute cinema",
+    image: "https://i.ytimg.com/vi/vXh43m1GC7Y/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDc-mfcJvv5FFR_bP9ne8HcAS0ZRQ",
+    likes: 21,
+    comments: 4
+  },
+  {
+    id: 2,
+    user: "phaideiglazer",
+    community: "r/Hades2",
+    time: "2 hrs ago",
+    text: "Very rarely does a game deserve the highest honors possible and that of course applies to the 1 star reviews as well, especially with Hades 2 which has a hilariously large amount of undeserved low scores. That is how these amateur reviewers treat things though, is it not? They use these review sections as their own personal diary of hate or biased favoritism, with reviews residing on opposite ends of the spectrum in either overwhelmingly support or unfounded hate.",
+    likes: 12,
+    comments: 2
+  },
+  {
+    id: 3,
+    user: "labubu",
+    community: "r/Franbow",
+    time: "1 day ago",
+    text: "franbow review. 9.5/10",
+    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/362680/capsule_616x353.jpg?t=1693287362",
+    likes: 58,
+    comments: 5
+  }
+];
+
+function FeedPost({ post }) {
+  return (
+    <article className="feed-post">
+      <div className="feed-header">
+        <div className="avatar small" />
+        <div className="meta">
+          <div className="user">
+            {post.user} <span>in {post.community}</span>
+          </div>
+          <div className="time">{post.time}</div>
+        </div>
+        <button className="more-btn">⋯</button>
+      </div>
+
+      {post.image && (
+        <div
+          className="feed-image"
+          style={{ backgroundImage: `url(${post.image})` }}
+        />
+      )}
+
+      <p className="feed-text">{post.text}</p>
+
+      <div className="feed-actions">
+        <span>♡ {post.likes} likes</span>
+        <span>💬 {post.comments} comments</span>
+      </div>
+    </article>
+  );
+}
+
 export default function App() {
   const [route, setRoute] = useState('home'); // home, search, profile, feed, sign
   const [selected, setSelected] = useState(null);
@@ -222,12 +285,19 @@ export default function App() {
         {route === 'search' && <SearchResults query={''} onSelect={openDetails} />}
         {route === 'profile' && <Profile />}
         {route === 'feed' && (
-          <main className="page">
-            <h3 className="section-title">Feed</h3>
-            <div className="post">A sample social post — likes and comments go here.</div>
-            <div className="post">Another post in the feed.</div>
+          <main className="page feed-page">
+            <div className="feed-tabs">
+              <button className="tab active">For You</button>
+              <button className="tab">Following</button>
+              <button className="tab">Favorites</button>
+            </div>
+
+            {SAMPLE_POSTS.map((post) => (
+              <FeedPost key={post.id} post={post} />
+            ))}
           </main>
         )}
+
         {route === 'details' && selected && <DetailsModal game={selected} onClose={() => { setSelected(null); setRoute('home'); }} />}
       </div>
 
