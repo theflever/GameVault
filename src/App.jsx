@@ -26,6 +26,14 @@ const SAMPLE_GAMES = [
     cover: 'https://image.api.playstation.com/vulcan/ap/rnd/202502/1221/0d00c92c1de9cc36fc5f6b48c5525a77ff036c7a67defdea.png',
     description: "Enter the abandoned workshop of Murray's Costume Manor and unravel the mystery left behind by the reclusive inventor, Edwin Murray. In Five Nights at Freddy's: Secret of the Mimic, you'll step into a world where every dark corner holds a secret and every flicker of light hints at an ever-present threat. The Mimic, a prototype endoskeleton, can adapt to any costume and become any character, including what you fear most."
   },
+  {
+    id: 4,
+    title: "Stardew Valley",
+    subtitle: 'Cozy · Farming',
+    price: '14.99',
+    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1754692865',
+    description: "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?"
+  },
 ];
 
 function TopBar({ onMenu, title }) {
