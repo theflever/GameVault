@@ -53,6 +53,7 @@ const SAMPLE_POSTS = [
     time: "3 min ago",
     text: "absolute cinema",
     image: "https://i.ytimg.com/vi/vXh43m1GC7Y/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDc-mfcJvv5FFR_bP9ne8HcAS0ZRQ",
+    avatar: "https://imgx.sonora.id/crop/0x0:0x0/x/photo/2024/08/18/helena-mcrjpg-20240818055836.jpg",
     likes: 21,
     comments: 4,
     votes: 21
@@ -63,6 +64,7 @@ const SAMPLE_POSTS = [
     community: "r/Hades2",
     time: "2 hrs ago",
     text: "Very rarely does a game deserve the highest honors possible and that of course applies to the 1 star reviews as well, especially with Hades 2 which has a hilariously large amount of undeserved low scores. That is how these amateur reviewers treat things though, is it not? They use these review sections as their own personal diary of hate or biased favoritism, with reviews residing on opposite ends of the spectrum in either overwhelmingly support or unfounded hate.",
+    avatar: "https://i.pinimg.com/736x/ab/6c/05/ab6c0592b45c2301af191a870818074d.jpg",
     likes: 12,
     comments: 2,
     votes: 30
@@ -74,10 +76,39 @@ const SAMPLE_POSTS = [
     time: "1 day ago",
     text: "franbow review. 9.5/10",
     image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/362680/capsule_616x353.jpg?t=1693287362",
+    avatar: "https://cobisnis.com/wp-content/uploads/2025/09/b59fafea93a177c493660ef1523a9b7a.jpg",
     likes: 58,
     comments: 5,
     votes: 11
   }
+];
+
+const GENRES = [
+  {
+    id: 1,
+    name: "Action",
+    image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Hades_2_cover_art.jpeg"
+  },
+  {
+    id: 2,
+    name: "Horror",
+    image: "https://upload.wikimedia.org/wikipedia/en/a/aa/Outlast_cover.jpg"
+  },
+  {
+    id: 3,
+    name: "Cozy",
+    image: "https://upload.wikimedia.org/wikipedia/en/4/4b/Unpacking_game_cover.png"
+  },
+  {
+    id: 4,
+    name: "Dating Sim",
+    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2201320/e03c7619aaa07af0bc1f3fb4630534693ccea9d4/capsule_616x353.jpg?t=1761833283"
+  },
+  {
+    id: 5,
+    name: "RPG",
+    image: "https://m.media-amazon.com/images/M/MV5BNzI4YTdiMWQtNzM4Zi00ODk4LWE2YTUtNTkwYjZjYzgyZjJlXkEyXkFqcGc@._V1_QL75_UY281_CR46,0,190,281_.jpg"
+  },
 ];
 
 function TopBar({ onMenu, title }) {
@@ -137,34 +168,6 @@ function GameCard({ game, onSelect }) {
     </article>
   );
 }
-
-const GENRES = [
-  {
-    id: 1,
-    name: "Action",
-    image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Hades_2_cover_art.jpeg"
-  },
-  {
-    id: 2,
-    name: "Horror",
-    image: "https://upload.wikimedia.org/wikipedia/en/a/aa/Outlast_cover.jpg"
-  },
-  {
-    id: 3,
-    name: "Cozy",
-    image: "https://upload.wikimedia.org/wikipedia/en/4/4b/Unpacking_game_cover.png"
-  },
-  {
-    id: 4,
-    name: "Dating Sim",
-    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2201320/e03c7619aaa07af0bc1f3fb4630534693ccea9d4/capsule_616x353.jpg?t=1761833283"
-  },
-  {
-    id: 5,
-    name: "RPG",
-    image: "https://m.media-amazon.com/images/M/MV5BNzI4YTdiMWQtNzM4Zi00ODk4LWE2YTUtNTkwYjZjYzgyZjJlXkEyXkFqcGc@._V1_QL75_UY281_CR46,0,190,281_.jpg"
-  },
-];
 
 function Home({ onSelect, onSearch }) {
   return (
@@ -263,7 +266,7 @@ function Profile() {
   return (
     <main className="page profile-page">
       <div className="profile-header-card">
-        <div className="profile-avatar" style={{ backgroundImage: 'url(https://picsum.photos/200)' }} />
+        <div className="profile-avatar" style={{ backgroundImage: 'url(https://preview.redd.it/240716-winter-instagram-update-v0-tub4rjggttcd1.jpg?width=1080&crop=smart&auto=webp&s=2d3a27e8013fdbd70a4e4f6fc24d6c442552bd42)' }} />
         <h2 className="profile-name">lavie de hypen</h2>
         <div className="profile-stats">
           <div><div className="num">154</div><div className="label">Played</div></div>
@@ -295,7 +298,11 @@ function FeedPost({ post }) {
   return (
     <article className="feed-post">
       <div className="feed-header">
-        <div className="avatar small" />
+        <img
+          src={post.avatar}
+          alt={post.user}
+          className="avatar small"
+        />
         <div className="meta">
           <div className="user">{post.user} <span>in {post.community}</span></div>
           <div className="time">{post.time}</div>
