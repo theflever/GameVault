@@ -40,7 +40,7 @@ const SAMPLE_GAMES = [
     subtitle: 'Survival Horror · Psychological',
     price: '19.99',
     cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1262350/header.jpg?t=1762193138',
-    description: "A survival horror game where a Replika android named Elster awakens from cryostasis after a crash and searches for her lost partner in a surreal, dystopian world."
+    description: "A Replika android named Elster awakens from cryostasis after a crash and searches for her lost partner in a surreal, dystopian world."
   },
 ];
 
@@ -108,7 +108,6 @@ function Home({ onSelect }) {
       <section className="sections">
         <h4 className="section-title">Featured</h4>
         <div className="carousel">
-          {/* simple horizontal scroll with big item */}
           {SAMPLE_GAMES.map((g) => (
             <div className="carousel-item" key={g.id} onClick={() => onSelect(g)}>
               <div className="carousel-cover" style={{ backgroundImage: `url(${g.cover})` }} />
@@ -131,7 +130,6 @@ function Home({ onSelect }) {
 }
 
 function SearchResults({ query, onSelect }) {
-  // simple filter by title
   const q = (query || '').toLowerCase();
   const results = SAMPLE_GAMES.filter((g) => g.title.toLowerCase().includes(q) || !q);
   return (
@@ -213,7 +211,8 @@ const SAMPLE_POSTS = [
     text: "absolute cinema",
     image: "https://i.ytimg.com/vi/vXh43m1GC7Y/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDc-mfcJvv5FFR_bP9ne8HcAS0ZRQ",
     likes: 21,
-    comments: 4
+    comments: 4,
+    votes: 21
   },
   {
     id: 2,
@@ -222,7 +221,8 @@ const SAMPLE_POSTS = [
     time: "2 hrs ago",
     text: "Very rarely does a game deserve the highest honors possible and that of course applies to the 1 star reviews as well, especially with Hades 2 which has a hilariously large amount of undeserved low scores. That is how these amateur reviewers treat things though, is it not? They use these review sections as their own personal diary of hate or biased favoritism, with reviews residing on opposite ends of the spectrum in either overwhelmingly support or unfounded hate.",
     likes: 12,
-    comments: 2
+    comments: 2,
+    votes: 30
   },
   {
     id: 3,
@@ -232,11 +232,24 @@ const SAMPLE_POSTS = [
     text: "franbow review. 9.5/10",
     image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/362680/capsule_616x353.jpg?t=1693287362",
     likes: 58,
-    comments: 5
+    comments: 5,
+    votes: 11
   }
 ];
 
 function FeedPost({ post }) {
+  const [vote, setVote] = React.useState(0);
+
+  const handleUpvote = () => {
+    setVote((prev) => (prev === 1 ? 0 : 1));
+  };
+
+  const handleDownvote = () => {
+    setVote((prev) => (prev === -1 ? 0 : -1));
+  };
+
+  const score = post.votes + vote;
+
   return (
     <article className="feed-post">
       <div className="feed-header">
@@ -260,15 +273,35 @@ function FeedPost({ post }) {
       <p className="feed-text">{post.text}</p>
 
       <div className="feed-actions">
-        <span>♡ {post.likes} likes</span>
-        <span>💬 {post.comments} comments</span>
+        <div className="vote-box">
+          <button
+            className={`vote-btn up ${vote === 1 ? "active" : ""}`}
+            onClick={handleUpvote}
+          >
+            ▲
+          </button>
+
+          <span className="vote-count">{score}</span>
+
+          <button
+            className={`vote-btn down ${vote === -1 ? "active" : ""}`}
+            onClick={handleDownvote}
+          >
+            ▼
+          </button>
+        </div>
+
+        <span className="comment-count">
+          💬 {post.comments} comments
+        </span>
       </div>
     </article>
   );
 }
 
+
 export default function App() {
-  const [route, setRoute] = useState('home'); // home, search, profile, feed, sign
+  const [route, setRoute] = useState('home');
   const [selected, setSelected] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 

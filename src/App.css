@@ -258,3 +258,40 @@ body{
   font-size: 13px;
   color: #aaa;
 }
+
+/* VOTING BUTTONS */
+
+.vote-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vote-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #777;
+}
+
+.vote-btn.up.active {
+  color: #ff7a00;
+}
+
+.vote-btn.down.active {
+  color: #6aa9ff;
+}
+
+.vote-count {
+  font-size: 14px;
+  color: white;
+  min-width: 24px;
+  text-align: center;
+}
+
+.comment-count {
+  margin-left: auto;
+  font-size: 13px;
+  color: #aaa;
+}
