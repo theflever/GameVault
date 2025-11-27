@@ -224,12 +224,10 @@ function SearchResults({ query, onSelect, onSearch }) {
       <div className="search-results">
         <SearchBar onSearch={onSearch} defaultValue={query} />
         <ul className="hot-list">
-          <li onClick={() => onSearch('signalis')}>signalis</li>
-          <li onClick={() => onSearch('firewatch')}>firewatch</li>
-          <li onClick={() => onSearch('deltarune')}>deltarune</li>
-          <li onClick={() => onSearch('volcano princess')}>volcano princess</li>
-          <li onClick={() => onSearch('disco elysium')}>disco elysium</li>
-          <li onClick={() => onSearch('stray')}>stray</li>
+          {history.length === 0 && <li className="muted">No search history yet</li>}
+          {history.map((item, i) => (
+            <li key={i} onClick={() => onHistoryClick(item)}>{item}</li>
+          ))}
         </ul>
         <div className="results-list">
           {results.map((g) => (
