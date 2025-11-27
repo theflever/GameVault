@@ -216,7 +216,7 @@ function Home({ onSelect, onSearch }) {
   );
 }
 
-function SearchResults({ query, onSelect, onSearch }) {
+function SearchResults({ query, onSelect, onSearch, history, onHistoryClick }) {
   const q = (query || '').toLowerCase();
   const results = SAMPLE_GAMES.filter((g) => g.title.toLowerCase().includes(q) || !q);
   return (
@@ -372,13 +372,25 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+const [searchHistory, setSearchHistory] = useState([]);
+
   const openDetails = (game) => {
     setSelected(game);
     setRoute('details');
   };
 
   const startSearch = (q) => {
-    setSearchQuery(q || '');
+    const cleaned = q.trim();
+    setSearchQuery(cleaned);
+    setRoute('search');
+
+    if (cleaned && !searchHistory.includes(cleaned)) {
+      setSearchHistory([cleaned, ...searchHistory.slice(0, 9)]); 
+    }
+  };
+
+  const handleHistoryClick = (term) => {
+    setSearchQuery(term);
     setRoute('search');
   };
 
@@ -391,7 +403,7 @@ export default function App() {
 
         {route === 'home' && <Home onSelect={openDetails} onSearch={startSearch} />}
 
-        {route === 'search' && <SearchResults query={searchQuery} onSelect={openDetails} onSearch={startSearch} />}
+        {route === 'search' && <SearchResults query={searchQuery} onSelect={openDetails} onSearch={startSearch} history={searchHistory} onHistoryClick={handleHistoryClick}/>}
 
         {route === 'profile' && <Profile />}
 
