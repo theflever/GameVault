@@ -21,8 +21,8 @@ const SAMPLE_GAMES = [
   },
   {
     id: 3,
-    title: "Five Nights at Freddy's",
-    subtitle: 'Horror · Indie',
+    title: "Five Nights at Freddy's Secret of the Mimic",
+    subtitle: 'Horror · Puzzle',
     price: '12.99',
     cover: 'https://image.api.playstation.com/vulcan/ap/rnd/202502/1221/0d00c92c1de9cc36fc5f6b48c5525a77ff036c7a67defdea.png',
     description: "Enter the abandoned workshop of Murray's Costume Manor and unravel the mystery left behind by the reclusive inventor, Edwin Murray. In Five Nights at Freddy's: Secret of the Mimic, you'll step into a world where every dark corner holds a secret and every flicker of light hints at an ever-present threat. The Mimic, a prototype endoskeleton, can adapt to any costume and become any character, including what you fear most."
@@ -337,37 +337,65 @@ function Feed() {
   );
 }
 
-/* --------- Login screen that matches the screenshot layout --------- */
-function Login({ onContinue }) {
-  const [email, setEmail] = useState('');
+function Onboarding({ onNext }) {
   return (
-    <main className="page login-page">
-      <h1 className="login-title">GameVault</h1>
-      <p className="login-sub">Create an account</p>
-      <p className="login-mini">Enter your email to sign up for this app</p>
+    <main className="page onboarding-page">
+      <h1 className="onboard-title">Welcome to<br />GameVault!</h1>
 
-      <input
-        className="login-input"
-        placeholder="email@domain.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div className="onboard-grid">
+        {SAMPLE_GAMES.slice(0, 12).map((g, i) => (
+          <div
+            key={i}
+            className="onboard-tile"
+            style={{ backgroundImage: `url(${g.cover})` }}
+          />
+        ))}
+      </div>
 
-      <button className="login-btn" onClick={() => onContinue(email)}>Continue</button>
+      <p className="onboard-text">Find the indie game<br />for you</p>
 
-      <div className="login-or">or</div>
-
-      <button className="login-oauth google">Continue with Google</button>
-      <button className="login-oauth apple">Continue with Apple</button>
-
-      <p className="login-terms">By clicking continue, you agree to our Terms of Service and Privacy Policy</p>
+      <button className="onboard-btn" onClick={onNext}>Next</button>
     </main>
   );
 }
 
-/* ---------------------- App (single default export) ---------------------- */
+function Login({ onContinue }) {
+  const [email, setEmail] = useState('');
+
+  return (
+    <main className="page login-page fancy-login">
+      <h1 className="login-title big">GameVault</h1>
+
+      <div className="login-card">
+        <h2>Create an account</h2>
+        <p className="login-mini">Enter your email to sign up for this app</p>
+
+        <input
+          className="login-input"
+          placeholder="email@domain.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <button className="login-btn primary" onClick={() => onContinue(email)}>
+          Continue
+        </button>
+
+        <div className="login-or">or</div>
+
+        <button className="login-oauth google">Continue with Google</button>
+        <button className="login-oauth apple">Continue with Apple</button>
+
+        <p className="login-terms">
+          By clicking continue, you agree to our Terms of Service and Privacy Policy
+        </p>
+      </div>
+    </main>
+  );
+}
+
 export default function App() {
-  const [route, setRoute] = useState('login'); // start at login
+  const [route, setRoute] = useState('onboarding');
   const [selected, setSelected] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -399,6 +427,8 @@ const [searchHistory, setSearchHistory] = useState([]);
       <TopBar onMenu={() => setMenuOpen(!menuOpen)} title="GameVault" />
 
       <div className={`app-container ${menuOpen ? 'menu-open' : ''}`}>
+        {route === 'onboarding' && <Onboarding onNext={() => setRoute('login')} />}
+
         {route === 'login' && <Login onContinue={() => setRoute('home')} />}
 
         {route === 'home' && <Home onSelect={openDetails} onSearch={startSearch} />}
