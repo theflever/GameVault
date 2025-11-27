@@ -157,12 +157,12 @@ const GENRES = [
   {
     id: 4,
     name: "Dating Sim",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400"
+    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2201320/e03c7619aaa07af0bc1f3fb4630534693ccea9d4/capsule_616x353.jpg?t=1761833283"
   },
   {
     id: 5,
     name: "RPG",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400"
+    image: "https://m.media-amazon.com/images/M/MV5BNzI4YTdiMWQtNzM4Zi00ODk4LWE2YTUtNTkwYjZjYzgyZjJlXkEyXkFqcGc@._V1_QL75_UY281_CR46,0,190,281_.jpg"
   },
 ];
 
