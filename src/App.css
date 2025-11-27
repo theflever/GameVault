@@ -295,3 +295,53 @@ body{
   font-size: 13px;
   color: #aaa;
 }
+
+/* GENRE SECTION */
+
+.section-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 18px;
+}
+
+.genre-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: none;
+}
+
+.genre-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.genre-card {
+  flex: 0 0 auto;
+  width: 80px;
+  text-align: center;
+}
+
+.genre-image {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.genre-name {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #d6c9ff;
+}
+

@@ -59,7 +59,7 @@ function BottomNav({ route, onChange }) {
     <nav className="bottom-nav" role="navigation" aria-label="main navigation">
       <button className={`nav-btn ${route === 'home' ? 'active' : ''}`} onClick={() => onChange('home')}>🏠</button>
       <button className={`nav-btn ${route === 'search' ? 'active' : ''}`} onClick={() => onChange('search')}>🔍</button>
-      <button className="nav-btn add">＋</button>
+      {/* <button className="nav-btn add">＋</button> */}
       <button className={`nav-btn ${route === 'feed' ? 'active' : ''}`} onClick={() => onChange('feed')}>🔔</button>
       <button className={`nav-btn ${route === 'profile' ? 'active' : ''}`} onClick={() => onChange('profile')}>👤</button>
     </nav>
@@ -101,6 +101,34 @@ function GameCard({ game, onSelect }) {
   );
 }
 
+const GENRES = [
+  {
+    id: 1,
+    name: "Action",
+    image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Hades_2_cover_art.jpeg"
+  },
+  {
+    id: 2,
+    name: "Horror",
+    image: "https://upload.wikimedia.org/wikipedia/en/a/aa/Outlast_cover.jpg"
+  },
+  {
+    id: 3,
+    name: "Cozy",
+    image: "https://upload.wikimedia.org/wikipedia/en/4/4b/Unpacking_game_cover.png"
+  },
+  {
+    id: 4,
+    name: "Dating Sim",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400"
+  },
+  {
+    id: 5,
+    name: "RPG",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400"
+  },
+];
+
 function Home({ onSelect }) {
   return (
     <main className="page">
@@ -112,6 +140,25 @@ function Home({ onSelect }) {
             <div className="carousel-item" key={g.id} onClick={() => onSelect(g)}>
               <div className="carousel-cover" style={{ backgroundImage: `url(${g.cover})` }} />
               <div className="carousel-caption">{g.title}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="sections genre-section">
+        <div className="section-row">
+          <h4 className="section-title">Genre</h4>
+          <button className="arrow-btn">›</button>
+        </div>
+
+        <div className="genre-scroll">
+          {GENRES.map((g) => (
+            <div key={g.id} className="genre-card">
+              <div
+                className="genre-image"
+                style={{ backgroundImage: `url(${g.image})` }}
+              />
+              <div className="genre-name">{g.name}</div>
             </div>
           ))}
         </div>
