@@ -1,47 +1,19 @@
+// src/App.js
 import React, { useState } from 'react';
 import './app.css';
 
 const SAMPLE_GAMES = [
-  {
-    id: 1,
-    title: 'Hollow Knight: Silksong',
-    subtitle: 'Action · Story Mode',
-    price: '7.49',
-    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1756994410',
-    description: "Play as Hornet, princess-protector of Hallownest, and adventure through a whole new kingdom ruled by silk and song! Captured and brought to this unfamiliar world, Hornet must battle foes and solve mysteries as she ascends on a deadly pilgrimage to the kingdom’s peak."
-  },
-  {
-    id: 2,
-    title: 'Discounty',
-    subtitle: 'Cozy · Casual',
-    price: 'Free',
-    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2274620/b2620f12bb1ce28ed7734bcddb5d561811b895d8/header_alt_assets_1.jpg?t=1760352963',
-    description: "Manage your own discount supermarket! Get caught up in small-town drama, organize and plan your shop's layout, and strike lucrative trade deals as you expand your secretive aunt's business empire. Selling more frozen fries will surely heal this broken community...right?"
-  },
-  {
-    id: 3,
-    title: "Five Nights at Freddy's",
-    subtitle: 'Horror · Indie',
-    price: '12.99',
-    cover: 'https://image.api.playstation.com/vulcan/ap/rnd/202502/1221/0d00c92c1de9cc36fc5f6b48c5525a77ff036c7a67defdea.png',
-    description: "Enter the abandoned workshop of Murray's Costume Manor and unravel the mystery left behind by the reclusive inventor, Edwin Murray. In Five Nights at Freddy's: Secret of the Mimic, you'll step into a world where every dark corner holds a secret and every flicker of light hints at an ever-present threat. The Mimic, a prototype endoskeleton, can adapt to any costume and become any character, including what you fear most."
-  },
-  {
-    id: 4,
-    title: "Stardew Valley",
-    subtitle: 'Cozy · Farming',
-    price: '14.99',
-    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1754692865',
-    description: "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?"
-  },
-  {
-    id: 5,
-    title: "Signalis",
-    subtitle: 'Survival Horror · Psychological',
-    price: '19.99',
-    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1262350/header.jpg?t=1762193138',
-    description: "A Replika android named Elster awakens from cryostasis after a crash and searches for her lost partner in a surreal, dystopian world."
-  },
+  { id: 1, title: 'Hollow Knight: Silksong', subtitle: 'Action · Story Mode', price: '7.49', cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1756994410', description: "Play as Hornet, princess-protector of Hallownest..." },
+  { id: 2, title: 'Discounty', subtitle: 'Cozy · Casual', price: 'Free', cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2274620/b2620f12bb1ce28ed7734bcddb5d561811b895d8/header_alt_assets_1.jpg?t=1760352963', description: "Manage your own discount supermarket!..." },
+  { id: 3, title: "Five Nights at Freddy's", subtitle: 'Horror · Indie', price: '12.99', cover: 'https://image.api.playstation.com/vulcan/ap/rnd/202502/1221/0d00c92c1de9cc36fc5f6b48c5525a77ff036c7a67defdea.png', description: "Enter the abandoned workshop..." },
+  { id: 4, title: "Stardew Valley", subtitle: 'Cozy · Farming', price: '14.99', cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1754692865', description: "You've inherited your grandfather's old farm..." },
+  { id: 5, title: "Signalis", subtitle: 'Survival Horror · Psychological', price: '19.99', cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1262350/header.jpg?t=1762193138', description: "A Replika android named Elster awakens..." },
+];
+
+const SAMPLE_POSTS = [
+  { id: 1, user: "xx_h3lena_xx", community: "r/SilkSong", time: "3 min ago", text: "absolute cinema", image: "https://i.ytimg.com/vi/vXh43m1GC7Y/hq720.jpg", likes: 21, comments: 4, votes: 21 },
+  { id: 2, user: "phaideiglazer", community: "r/Hades2", time: "2 hrs ago", text: "Very rarely does a game deserve the highest honors possible...", likes: 12, comments: 2, votes: 30 },
+  { id: 3, user: "labubu", community: "r/Franbow", time: "1 day ago", text: "franbow review. 9.5/10", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/362680/capsule_616x353.jpg?t=1693287362", likes: 58, comments: 5, votes: 11 },
 ];
 
 function TopBar({ onMenu, title }) {
@@ -66,8 +38,9 @@ function BottomNav({ route, onChange }) {
   );
 }
 
-function SearchBar({ onSearch }) {
-  const [q, setQ] = useState('');
+function SearchBar({ onSearch, defaultValue = '' }) {
+  const [q, setQ] = useState(defaultValue);
+  // if you want live search, call onSearch inside onChange
   return (
     <div className="search-wrap">
       <input
@@ -101,10 +74,10 @@ function GameCard({ game, onSelect }) {
   );
 }
 
-function Home({ onSelect }) {
+function Home({ onSelect, onSearch }) {
   return (
     <main className="page">
-      <SearchBar onSearch={() => {}} />
+      <SearchBar onSearch={onSearch} />
       <section className="sections">
         <h4 className="section-title">Featured</h4>
         <div className="carousel">
@@ -129,20 +102,20 @@ function Home({ onSelect }) {
   );
 }
 
-function SearchResults({ query, onSelect }) {
+function SearchResults({ query, onSelect, onSearch }) {
   const q = (query || '').toLowerCase();
   const results = SAMPLE_GAMES.filter((g) => g.title.toLowerCase().includes(q) || !q);
   return (
     <main className="page">
       <div className="search-results">
-        <SearchBar onSearch={() => {}} />
+        <SearchBar onSearch={onSearch} defaultValue={query} />
         <ul className="hot-list">
-          <li>signalis</li>
-          <li>firewatch</li>
-          <li>deltarune</li>
-          <li>volcano princess</li>
-          <li>disco elysium</li>
-          <li>stray</li>
+          <li onClick={() => onSearch('signalis')}>signalis</li>
+          <li onClick={() => onSearch('firewatch')}>firewatch</li>
+          <li onClick={() => onSearch('deltarune')}>deltarune</li>
+          <li onClick={() => onSearch('volcano princess')}>volcano princess</li>
+          <li onClick={() => onSearch('disco elysium')}>disco elysium</li>
+          <li onClick={() => onSearch('stray')}>stray</li>
         </ul>
         <div className="results-list">
           {results.map((g) => (
@@ -202,52 +175,10 @@ function Profile() {
   );
 }
 
-const SAMPLE_POSTS = [
-  {
-    id: 1,
-    user: "xx_h3lena_xx",
-    community: "r/SilkSong",
-    time: "3 min ago",
-    text: "absolute cinema",
-    image: "https://i.ytimg.com/vi/vXh43m1GC7Y/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDc-mfcJvv5FFR_bP9ne8HcAS0ZRQ",
-    likes: 21,
-    comments: 4,
-    votes: 21
-  },
-  {
-    id: 2,
-    user: "phaideiglazer",
-    community: "r/Hades2",
-    time: "2 hrs ago",
-    text: "Very rarely does a game deserve the highest honors possible and that of course applies to the 1 star reviews as well, especially with Hades 2 which has a hilariously large amount of undeserved low scores. That is how these amateur reviewers treat things though, is it not? They use these review sections as their own personal diary of hate or biased favoritism, with reviews residing on opposite ends of the spectrum in either overwhelmingly support or unfounded hate.",
-    likes: 12,
-    comments: 2,
-    votes: 30
-  },
-  {
-    id: 3,
-    user: "labubu",
-    community: "r/Franbow",
-    time: "1 day ago",
-    text: "franbow review. 9.5/10",
-    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/362680/capsule_616x353.jpg?t=1693287362",
-    likes: 58,
-    comments: 5,
-    votes: 11
-  }
-];
-
 function FeedPost({ post }) {
   const [vote, setVote] = React.useState(0);
-
-  const handleUpvote = () => {
-    setVote((prev) => (prev === 1 ? 0 : 1));
-  };
-
-  const handleDownvote = () => {
-    setVote((prev) => (prev === -1 ? 0 : -1));
-  };
-
+  const handleUpvote = () => setVote((prev) => (prev === 1 ? 0 : 1));
+  const handleDownvote = () => setVote((prev) => (prev === -1 ? 0 : -1));
   const score = post.votes + vote;
 
   return (
@@ -255,81 +186,100 @@ function FeedPost({ post }) {
       <div className="feed-header">
         <div className="avatar small" />
         <div className="meta">
-          <div className="user">
-            {post.user} <span>in {post.community}</span>
-          </div>
+          <div className="user">{post.user} <span>in {post.community}</span></div>
           <div className="time">{post.time}</div>
         </div>
         <button className="more-btn">⋯</button>
       </div>
 
-      {post.image && (
-        <div
-          className="feed-image"
-          style={{ backgroundImage: `url(${post.image})` }}
-        />
-      )}
+      {post.image && <div className="feed-image" style={{ backgroundImage: `url(${post.image})` }} />}
 
       <p className="feed-text">{post.text}</p>
 
       <div className="feed-actions">
         <div className="vote-box">
-          <button
-            className={`vote-btn up ${vote === 1 ? "active" : ""}`}
-            onClick={handleUpvote}
-          >
-            ▲
-          </button>
-
+          <button className={`vote-btn up ${vote === 1 ? "active" : ""}`} onClick={handleUpvote}>▲</button>
           <span className="vote-count">{score}</span>
-
-          <button
-            className={`vote-btn down ${vote === -1 ? "active" : ""}`}
-            onClick={handleDownvote}
-          >
-            ▼
-          </button>
+          <button className={`vote-btn down ${vote === -1 ? "active" : ""}`} onClick={handleDownvote}>▼</button>
         </div>
-
-        <span className="comment-count">
-          💬 {post.comments} comments
-        </span>
+        <span className="comment-count">💬 {post.comments} comments</span>
       </div>
     </article>
   );
 }
 
+function Feed() {
+  return (
+    <main className="page feed-page">
+      <div className="feed-tabs">
+        <button className="tab active">For You</button>
+        <button className="tab">Following</button>
+        <button className="tab">Favorites</button>
+      </div>
+      {SAMPLE_POSTS.map((post) => <FeedPost key={post.id} post={post} />)}
+    </main>
+  );
+}
 
+/* --------- Login screen that matches the screenshot layout --------- */
+function Login({ onContinue }) {
+  const [email, setEmail] = useState('');
+  return (
+    <main className="page login-page">
+      <h1 className="login-title">GameVault</h1>
+      <p className="login-sub">Create an account</p>
+      <p className="login-mini">Enter your email to sign up for this app</p>
+
+      <input
+        className="login-input"
+        placeholder="email@domain.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <button className="login-btn" onClick={() => onContinue(email)}>Continue</button>
+
+      <div className="login-or">or</div>
+
+      <button className="login-oauth google">Continue with Google</button>
+      <button className="login-oauth apple">Continue with Apple</button>
+
+      <p className="login-terms">By clicking continue, you agree to our Terms of Service and Privacy Policy</p>
+    </main>
+  );
+}
+
+/* ---------------------- App (single default export) ---------------------- */
 export default function App() {
-  const [route, setRoute] = useState('home');
+  const [route, setRoute] = useState('login'); // start at login
   const [selected, setSelected] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const openDetails = (game) => {
     setSelected(game);
     setRoute('details');
   };
 
+  const startSearch = (q) => {
+    setSearchQuery(q || '');
+    setRoute('search');
+  };
+
   return (
     <div className="app-root">
       <TopBar onMenu={() => setMenuOpen(!menuOpen)} title="GameVault" />
-      <div className={`app-container ${menuOpen ? 'menu-open' : ''}`}>
-        {route === 'home' && <Home onSelect={openDetails} />}
-        {route === 'search' && <SearchResults query={''} onSelect={openDetails} />}
-        {route === 'profile' && <Profile />}
-        {route === 'feed' && (
-          <main className="page feed-page">
-            <div className="feed-tabs">
-              <button className="tab active">For You</button>
-              <button className="tab">Following</button>
-              <button className="tab">Favorites</button>
-            </div>
 
-            {SAMPLE_POSTS.map((post) => (
-              <FeedPost key={post.id} post={post} />
-            ))}
-          </main>
-        )}
+      <div className={`app-container ${menuOpen ? 'menu-open' : ''}`}>
+        {route === 'login' && <Login onContinue={() => setRoute('home')} />}
+
+        {route === 'home' && <Home onSelect={openDetails} onSearch={startSearch} />}
+
+        {route === 'search' && <SearchResults query={searchQuery} onSelect={openDetails} onSearch={startSearch} />}
+
+        {route === 'profile' && <Profile />}
+
+        {route === 'feed' && <Feed />}
 
         {route === 'details' && selected && <DetailsModal game={selected} onClose={() => { setSelected(null); setRoute('home'); }} />}
       </div>
@@ -338,4 +288,3 @@ export default function App() {
     </div>
   );
 }
-
