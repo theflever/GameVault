@@ -59,6 +59,30 @@ const SAMPLE_GAMES = [
     cover: 'https://gaming-cdn.com/images/products/2586/orig/outer-wilds-pc-game-steam-cover.jpg?v=1710230924',
     description: "The game follows the player character as they explore a planetary system stuck in a 22-minute time loop that resets after the sun goes supernova and destroys the system. Through repeated attempts, they investigate the alien ruins of the Nomai to discover their history and the cause of the time loop."
   },
+  {
+    id: 8,
+    title: "Lethal Company",
+    subtitle: 'Survival · Multiplayer',
+    price: '9.99',
+    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1966720/header.jpg?t=1762544438',
+    description: "You are a contracted worker for the Company. Your job is to collect scrap from abandoned, industrialized moons to meet the Company's profit quota. You can use the cash you earn to travel to new moons with higher risks and rewards--or you can buy fancy suits and decorations for your ship. Experience nature, scanning any creature you find to add them to your bestiary. Explore the wondrous outdoors and rummage through their derelict, steel and concrete underbellies. Just never miss the quota."
+  },
+  {
+    id: 9,
+    title: "PEAK",
+    subtitle: 'Platformer · Multiplayer',
+    price: '7.99',
+    cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/bd3771d9a3827610b2742de13d8552918008c302/header_alt_assets_2.jpg?t=1764003551',
+    description: "PEAK is a co-op climbing game where the slightest mistake can spell your doom. Either solo or as a group of lost nature scouts, your only hope of rescue from a mysterious island is to scale the mountain at its center. Do you have what it takes to reach the PEAK?"
+  },
+  {
+    id: 10,
+    title: "Little Nightmares",
+    subtitle: 'Horror · Story',
+    price: '19.99',
+    cover: 'https://images.gog-statics.com/f4afd788040ae359f4c8f42108144750ec1a10d06c6ad04ee80ea7475d21a216.jpg',
+    description: "Take on the role of Six, a lone child lost in a massive metal vessel known as the Maw, surrounded by dangerous, distorted versions of adults. You’ll need to do your best to escape in one piece or your fate will be worse than you ever dared dream."
+  },
 ];
 
 const SAMPLE_POSTS = [
