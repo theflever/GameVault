@@ -156,7 +156,10 @@ function TopBar({ onMenu, title }) {
     <header className="topbar">
       <button className="icon-btn" onClick={onMenu} aria-label="menu">☰</button>
       <div className="title">{title}</div>
-      <div className="avatar" aria-hidden />
+      <div
+      className="avatar"
+      style={{ backgroundImage: 'url(https://preview.redd.it/240716-winter-instagram-update-v0-tub4rjggttcd1.jpg?width=1080&crop=smart&auto=webp&s=2d3a27e8013fdbd70a4e4f6fc24d6c442552bd42)' }}
+      />
     </header>
   );
 }
