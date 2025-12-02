@@ -43,6 +43,22 @@ const SAMPLE_GAMES = [
     cover: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1262350/header.jpg?t=1762193138',
     description: "A Replika android named Elster awakens from cryostasis after a crash and searches for her lost partner in a surreal, dystopian world."
   },
+  {
+    id: 6,
+    title: "Disco Elysium",
+    subtitle: 'Role-Playing · Adventure',
+    price: '39.99',
+    cover: 'https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/10/disco-elysium-visual-calculus.jpg?w=1600&h=900&fit=crop',
+    description: "We follow a troubled detective with no memory of his identity or the world around him. As he investigates a murder with a detective from another precinct, the player can piece together the protagonist's identity and discover what led him to his state."
+  },
+  {
+    id: 7,
+    title: "Outer Wilds",
+    subtitle: 'Action · Open-World',
+    price: '24.99',
+    cover: 'https://gaming-cdn.com/images/products/2586/orig/outer-wilds-pc-game-steam-cover.jpg?v=1710230924',
+    description: "The game follows the player character as they explore a planetary system stuck in a 22-minute time loop that resets after the sun goes supernova and destroys the system. Through repeated attempts, they investigate the alien ruins of the Nomai to discover their history and the cause of the time loop."
+  },
 ];
 
 const SAMPLE_POSTS = [
@@ -341,16 +357,18 @@ function Onboarding({ onNext }) {
   return (
     <main className="page onboarding-page">
       <h1 className="onboard-title">Welcome to<br />GameVault!</h1>
-
-      <div className="onboard-grid">
-        {SAMPLE_GAMES.slice(0, 12).map((g, i) => (
-          <div
-            key={i}
-            className="onboard-tile"
-            style={{ backgroundImage: `url(${g.cover})` }}
-          />
-        ))}
-      </div>
+      <img
+        src="https://indiegamecloud.com/wp-content/uploads/2023/07/top-1001-1024x427.jpg"
+        alt="Onboarding"
+        className="onboard-image"
+        style={{
+          width: "260px",
+          height: "260px",
+          objectFit: "cover",
+          borderRadius: "12px",
+          marginBottom: "20px"
+        }}
+      />
 
       <p className="onboard-text">Find the indie game<br />for you</p>
 
