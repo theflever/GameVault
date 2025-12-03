@@ -130,10 +130,8 @@ body{
 .profile-stats .num{ font-weight:700; color:var(--text); font-size:16px; }
 .profile-chips{ display:flex; gap:8px; justify-content:center; margin-top:12px; }
 
-/* light cards inside profile or feed */
 .card-light{ background:rgba(255,255,255,0.02); border-radius:10px; padding:12px; margin:10px 0; border:1px solid rgba(255,255,255,0.03); }
 
-/* Bottom nav */
 .bottom-nav{
   position:fixed; left:50%; transform:translateX(-50%); bottom:16px; z-index:60;
   width:calc(100% - 32px); max-width:980px;
@@ -146,10 +144,8 @@ body{
 .nav-btn.active{ color:var(--text); background: rgba(255,255,255,0.02); }
 .nav-btn.add{ background: linear-gradient(90deg,var(--accent), #b07bd8); color:white; padding:10px 14px; border-radius:12px; font-weight:700; }
 
-/* small utilities */
 .post{ background:rgba(255,255,255,0.02); padding:12px; border-radius:12px; margin:12px 6px; color:var(--muted); }
 
-/* responsive tweaks i know dada */
 @media(min-width:900px){
   .topbar{ height:72px; }
   .app-container{ padding: 18px; }
@@ -269,11 +265,11 @@ body{
 }
 
 .vote-btn.up.active {
-  color: #ff7a00;
+  color: #0253f6;
 }
 
 .vote-btn.down.active {
-  color: #6aa9ff;
+  color: #ef3a03;
 }
 
 .vote-count {
@@ -338,7 +334,7 @@ body{
   color: #d6c9ff;
 }
 
-/* ---------- ONBOARDING ---------- */
+/* ONBOARDING  */
 .onboarding-page {
   text-align: center;
   padding: 30px 20px;
