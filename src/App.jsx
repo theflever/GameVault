@@ -169,7 +169,6 @@ function BottomNav({ route, onChange }) {
     <nav className="bottom-nav" role="navigation" aria-label="main navigation">
       <button className={`nav-btn ${route === 'home' ? 'active' : ''}`} onClick={() => onChange('home')}>🏠</button>
       <button className={`nav-btn ${route === 'search' ? 'active' : ''}`} onClick={() => onChange('search')}>🔍</button>
-      {/* <button className="nav-btn add">＋</button> */}
       <button className={`nav-btn ${route === 'feed' ? 'active' : ''}`} onClick={() => onChange('feed')}>🔔</button>
       <button className={`nav-btn ${route === 'profile' ? 'active' : ''}`} onClick={() => onChange('profile')}>👤</button>
     </nav>
@@ -178,7 +177,6 @@ function BottomNav({ route, onChange }) {
 
 function SearchBar({ onSearch, defaultValue = '' }) {
   const [q, setQ] = useState(defaultValue);
-  // if you want live search, call onSearch inside onChange
   return (
     <div className="search-wrap">
       <input
