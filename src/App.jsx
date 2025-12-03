@@ -312,7 +312,7 @@ function Profile() {
         <div className="profile-stats">
           <div><div className="num">154</div><div className="label">Played</div></div>
           <div><div className="num">324</div><div className="label">Saved</div></div>
-          <div><div className="num">11</div><div className="label">Following</div></div>
+          <div><div className="num">2</div><div className="label">Following</div></div>
         </div>
         <div className="profile-chips">
           <button className="chip">Collection</button>
